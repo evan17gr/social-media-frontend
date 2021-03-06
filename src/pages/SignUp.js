@@ -17,7 +17,7 @@ const SignUp = ({url}) =>
             password,
             confirmPassword
         } ).then((response) => console.log(response)
-       ).catch((err) => console.log(err))
+       ).catch((err) => console.log(err.response.data))
     }
 
     return (
