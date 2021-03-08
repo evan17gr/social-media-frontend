@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {instance} from "../axios"
 
-const SignUp = ({url}) =>
+const SignUp = () =>
 {
     const [username, setUsername] = useState( "" )
     const [email,setEmail] = useState("")
