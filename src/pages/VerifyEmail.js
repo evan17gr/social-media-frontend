@@ -7,10 +7,22 @@ const VerifyEmail = () =>
     let {token} = useParams();
     useEffect( () =>
     {
-        instance.post( `users/email/verify/${ token }`, {
+        instance.post( `users/email/verify`, {
            token
-        } ).then((response) => console.log(response)
-       ).catch((err) => console.log(err.response))
+        } ).then( ( response ) =>
+        {
+            if ( response.data.msg === "Token has expired" )
+            {
+                instance.post( `users/email/resend`, {
+                    token
+                }).then((response) => console.log(response.data)).catch((err) => console.log(err))
+            }
+            else
+            {
+                console.log( response );
+            }
+        }
+       ).catch((err) => console.log(err))
     },[])
 
     return (
